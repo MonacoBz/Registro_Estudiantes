@@ -1,5 +1,6 @@
 package com.uamex.estudiantesregistro.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.Id;
@@ -7,28 +8,31 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "ESTUDIANTE")
+@Table(name = "estudiante")
 public class Estudiante {
     @Id
     private String matricula;
 
     private String nombre;
 
-    private String apellido_p;
+    @Column(name = "apellido_p")
+    private String apellidoP;
 
-    private String apellido_M;
+    @Column(name = "apellido_m")
+    private String apellidoM;
 
     private int edad;
 
     private String carrera;
 
-    private String correo_electronico;
+    @Column(name = "correo_electronico")
+    private String correoElectronico;
 
     public Estudiante(String apellido_M, String apellido_p, String carrera, String correo_electronico, int edad, String matricula, String nombre) {
-        this.apellido_M = apellido_M;
-        this.apellido_p = apellido_p;
+        this.apellidoM = apellido_M;
+        this.apellidoP = apellido_p;
         this.carrera = carrera;
-        this.correo_electronico = correo_electronico;
+        this.correoElectronico = correo_electronico;
         this.edad = edad;
         this.matricula = matricula;
         this.nombre = nombre;
@@ -38,20 +42,20 @@ public class Estudiante {
 
     }
 
-    public String getApellido_M() {
-        return apellido_M;
+    public String getApellidoM() {
+        return apellidoM;
     }
 
-    public void setApellido_M(String apellido_M) {
-        this.apellido_M = apellido_M;
+    public void setApellidoM(String apellido_M) {
+        this.apellidoM = apellido_M;
     }
 
-    public String getApellido_p() {
-        return apellido_p;
+    public String getApellidoP() {
+        return apellidoP;
     }
 
-    public void setApellido_p(String apellido_p) {
-        this.apellido_p = apellido_p;
+    public void setApellidoP(String apellido_p) {
+        this.apellidoP = apellido_p;
     }
 
     public String getCarrera() {
@@ -63,11 +67,11 @@ public class Estudiante {
     }
 
     public String getCorreo_electronico() {
-        return correo_electronico;
+        return correoElectronico;
     }
 
     public void setCorreo_electronico(String correo_electronico) {
-        this.correo_electronico = correo_electronico;
+        this.correoElectronico = correo_electronico;
     }
 
     public int getEdad() {
