@@ -28,7 +28,7 @@ public class Estudiante {
     @Column(name = "correo_electronico")
     private String correoElectronico;
 
-    public Estudiante(String apellido_M, String apellido_p, String carrera, String correo_electronico, int edad, String matricula, String nombre) {
+    public Estudiante(String matricula,String nombre,String apellido_p,String apellido_M,int edad,String correo_electronico,String carrera) {
         this.apellidoM = apellido_M;
         this.apellidoP = apellido_p;
         this.carrera = carrera;

@@ -3,10 +3,7 @@ package com.uamex.estudiantesregistro.controller;
 import com.uamex.estudiantesregistro.dto.EstudianteDto;
 import com.uamex.estudiantesregistro.service.EstudianteService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,10 @@ public class EstudianteController {
         this.service = service;
     }
 
+    @PostMapping("/nuevo")
+    public ResponseEntity<Boolean> createStudent(@RequestBody EstudianteDto estudiante){
+        return ResponseEntity.ok(service.createStudent(estudiante));
+    }
     @GetMapping("/todos")
     public ResponseEntity<List<EstudianteDto>> getAll(){
         return ResponseEntity.ok(service.getAll());
@@ -53,6 +54,11 @@ public class EstudianteController {
     @GetMapping("/correo/{correo}")
     public ResponseEntity<EstudianteDto> getByCorreo(@PathVariable String correo){
         return ResponseEntity.ok(service.getByCorreo(correo));
+    }
+
+    @PutMapping("/actualiza")
+    public ResponseEntity<Boolean> updateStuden(@RequestBody EstudianteDto estudiante){
+        return ResponseEntity.ok(service.updateEstudiante(estudiante));
     }
 
 
