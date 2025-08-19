@@ -3,6 +3,7 @@ package com.uamex.estudiantesregistro.service;
 import com.uamex.estudiantesregistro.dto.EstudianteDto;
 import com.uamex.estudiantesregistro.entity.Estudiante;
 import com.uamex.estudiantesregistro.exceptions.NoCreateException;
+import com.uamex.estudiantesregistro.exceptions.NoDeleteException;
 import com.uamex.estudiantesregistro.exceptions.NoFindException;
 import com.uamex.estudiantesregistro.exceptions.NoUpdateException;
 import com.uamex.estudiantesregistro.repository.EstudianteRepository;
@@ -99,6 +100,16 @@ public class EstudianteService {
             repository.save(data);
         }catch (Exception e){
             throw new NoUpdateException();
+        }
+        return true;
+    }
+
+    public boolean removeEstudiante(EstudianteDto estudiante){
+        try{
+            Estudiante data = estudianteDtoToEstudiante(estudiante);
+            repository.delete(data);
+        }catch (Exception e){
+            throw new NoDeleteException();
         }
         return true;
     }

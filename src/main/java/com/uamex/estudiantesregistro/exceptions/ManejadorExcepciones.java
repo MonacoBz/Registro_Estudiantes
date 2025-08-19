@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ManejadorExcepciones {
 
-    @ExceptionHandler({NoFindException.class,NoUpdateException.class,NoCreateException.class})
+    @ExceptionHandler({NoFindException.class
+            ,NoUpdateException.class
+            ,NoCreateException.class
+            ,NoDeleteException.class})
     public ResponseEntity<String> noFindException(NoFindException e){
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)

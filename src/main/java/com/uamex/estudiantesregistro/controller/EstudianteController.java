@@ -57,9 +57,13 @@ public class EstudianteController {
     }
 
     @PutMapping("/actualiza")
-    public ResponseEntity<Boolean> updateStuden(@RequestBody EstudianteDto estudiante){
+    public ResponseEntity<Boolean> updateStudent(@RequestBody EstudianteDto estudiante){
         return ResponseEntity.ok(service.updateEstudiante(estudiante));
     }
 
+    @DeleteMapping("/elimina")
+    public ResponseEntity<Boolean> deleteStudent(@RequestBody EstudianteDto estudiante){
+        return ResponseEntity.ok(service.removeEstudiante(estudiante));
+    }
 
 }
