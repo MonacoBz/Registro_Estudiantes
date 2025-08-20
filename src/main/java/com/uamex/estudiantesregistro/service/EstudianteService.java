@@ -2,10 +2,7 @@ package com.uamex.estudiantesregistro.service;
 
 import com.uamex.estudiantesregistro.dto.EstudianteDto;
 import com.uamex.estudiantesregistro.entity.Estudiante;
-import com.uamex.estudiantesregistro.exceptions.NoCreateException;
-import com.uamex.estudiantesregistro.exceptions.NoDeleteException;
-import com.uamex.estudiantesregistro.exceptions.NoFindException;
-import com.uamex.estudiantesregistro.exceptions.NoUpdateException;
+import com.uamex.estudiantesregistro.exceptions.*;
 import com.uamex.estudiantesregistro.repository.EstudianteRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +18,7 @@ public class EstudianteService {
     }
 
     public boolean createStudent(EstudianteDto estudiante){
+        if(repository.existsById(estudiante.matricula())&&repository.existsByCorreoElectronico(estudiante.correo()))throw new DuplicateDataException();
         try{
             Estudiante data = estudianteDtoToEstudiante(estudiante);
             repository.save(data);

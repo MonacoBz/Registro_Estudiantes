@@ -21,4 +21,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante,String> {
 
     List<Estudiante> findByCarrera(String carrera);
 
+    boolean existsByCorreoElectronico(String correoElectronico);
+
+
 }
